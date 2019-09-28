@@ -1,0 +1,61 @@
+//Hamza Aziz, CSC 200, lab 07 
+//computer generates a random number from 1 to 100
+//program asks user for input as guesses 
+// user guesses and program responds with error check if its lower or higher
+//depending on how many tries it took, switch statement determines the grade A,B,C
+package Labs;
+
+import java.util.Scanner;
+
+public class RandomNumGuess {
+
+	public static void main(String[] args) {
+		//creates scanner object
+		Scanner scan = new Scanner(System.in);
+		//variables
+		int computerValue = (int)(Math.random()*101);
+		//this is the statement that generates the number for computer value
+		int guessValue = 0;
+		int countValue = 0;
+		int gradeValue = 0;
+		int A;
+		int B;
+		int C;
+		
+		//user's turn to enter the number 
+		System.out.println("I am thinking of a number between 1 to 100, guess what it is!");
+		guessValue = scan.nextInt();
+		//error checking of how close you are 
+		//lower or higher
+		while(guessValue != computerValue) {
+			guessValue = scan.nextInt();
+			countValue++;
+			//countValue counts how many times tried
+			if(guessValue>computerValue) {
+				System.out.println("Lower");
+			} else if (guessValue<computerValue) {
+				System.out.println("Higher");
+			}
+		}
+			//switch statements to count how many tries it took and to give out grade
+			switch(gradeValue) {
+			case 0:
+				if(countValue<4) { //if value is less than 4 then run this piece
+					System.out.println("Congrats, you guessed the number with " +countValue + " tires");
+					System.out.println("Your grade is A ");
+				}
+				else if(countValue>4 && countValue<7) { //if value is greater than 4 and less than seven, run this piece 
+					System.out.println("Congrats, you guessed the number with " +countValue + " tires");
+					System.out.println("Your grade is B");
+				}
+				else if(countValue>7) { //if value is greater than 7, run this piece
+					System.out.println("Congrats, you guessed the number with " +countValue + " tires");
+					System.out.println("Your grade is C");
+				}
+				break;
+			}//end switch
+				
+	}//end main
+
+}//end class
+
